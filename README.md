@@ -12,7 +12,7 @@ This repository contains my practice sessions and projects in R, a programming l
 ## Purpose
 This repository serves as a record of my progress in learning R and a resource for future reference.
 
-## Technologies Used
+## Tools Used
 * R
 * RStudio
 * Various R packages (e.g., `stringr`, `lubridate`, `ggplot2`, `tidyr`, `tidyverse`, etc)
