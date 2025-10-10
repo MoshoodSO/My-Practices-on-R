@@ -1,10 +1,10 @@
-📊 R Practice Repository
+## 📊 R Practice Repository
 
 Welcome to my *R Practice Repository* — a curated collection of my learning journey in *R programming*, focusing on data analysis, statistical computing, and visualization.
 
 ---
 
-📁 Contents
+## 📁 Contents
 
 - *`/Basics`*  
   Core R concepts, syntax, and foundational operations — including variables, data types, loops, conditionals, and basic functions.
@@ -20,7 +20,7 @@ Welcome to my *R Practice Repository* — a curated collection of my learning jo
 
 ---
 
-🎯 Purpose
+## 🎯 Purpose
 
 This repository is a personal initiative to:
 
