@@ -1,7 +1,6 @@
 ## R Practice Repository
-___
 
-This repository contains my practice sessions and projects in R, a programming language for statistical computing and graphics.
+This repository contains my practice sessions and projects in R, a programming language for statistical computing and graphics. 
 
 ## Contents
 * **Basics**: Fundamental concepts and syntax of R
@@ -14,7 +13,7 @@ This repository serves as a record of my progress in learning R and a resource f
 
 ## Tools Used
 * R
-* RStudio
+* RStudio markdown 
 * Various R packages (e.g., `stringr`, `lubridate`, `ggplot2`, `tidyr`, `tidyverse`, etc)
 
 ## How to Use
