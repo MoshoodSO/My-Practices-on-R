@@ -1,4 +1,3 @@
-8
 ## 📊 R Practice Repository
 
 Welcome to my *R Practice Repository* — a curated collection of my learning journey in *R programming*, focusing on data analysis, statistical computing, and visualization.
