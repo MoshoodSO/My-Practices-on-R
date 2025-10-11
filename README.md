@@ -1,4 +1,4 @@
-
+8
 ## 📊 R Practice Repository
 
 Welcome to my *R Practice Repository* — a curated collection of my learning journey in *R programming*, focusing on data analysis, statistical computing, and visualization.
@@ -62,14 +62,14 @@ This repository is a personal initiative to:
 
 ---
 
-🤝 Contributions
+## 🤝 Contributions
 
 This is a learning repository, but suggestions and feedback are welcome!  
 Feel free to open issues or submit pull requests with improvements or ideas.
 
 ---
 
-##📌 Notes
+## 📌 Notes
 
 - All code and projects are for educational and practice purposes.
 - Some datasets used may be publicly available or simulated.
