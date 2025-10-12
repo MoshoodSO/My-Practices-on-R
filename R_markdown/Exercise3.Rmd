@@ -69,6 +69,69 @@ category_ratings <- function(x){
 sapply(product_ratings, category_ratings)
 ```
 
+Problem 4: Transactions Analysis
+["2024-01-03", "2024-01-08", "2024-01-09", "2024-01-11", "2024-01-15",
+  "2024-01-19", "2024-01-22", "2024-01-26", "2024-01-30", "2024-02-01",
+  "2024-02-01", "2024-02-06", "2024-02-09", "2024-02-12", "2024-02-14",
+  "2024-02-19", "2024-02-19", "2024-02-22", "2024-02-26", "2024-02-29",
+  "2024-03-01", "2024-03-01", "2024-03-06", "2024-03-08", "2024-03-08",
+  "2024-03-12", "2024-03-13", "2024-03-15", "2024-03-18", "2024-03-18",
+  "2024-03-19", "2024-03-20", "2024-03-21", "2024-03-22", "2024-03-22",
+  "2024-03-22", "2024-03-25", "2024-03-26", "2024-03-27", "2024-03-28",
+  "2024-03-29", "2024-03-30", "2024-03-31", "2024-01-05", "2024-01-15",
+  "2024-01-25", "2024-02-05", "2024-02-15", "2024-02-26", "2024-03-05"]
+    • You have 50 dates representing transaction dates between January 1, 2024, and March 31, 2024.
+    • Write a function to count the number of transactions that occurred in each month.
+    • Find the date with the most transactions and count how many days have more transactions than the average.
+    • Output: Number of transactions per month, the date with the most transactions, and the count of days with above-average transactions.
+```{r}
+transaction_dates <- as.Date(c(
+ "2024-01-03", "2024-01-08", "2024-01-09", "2024-01-11", "2024-01-15",
+  "2024-01-19", "2024-01-22", "2024-01-26", "2024-01-30", "2024-02-01",
+  "2024-02-01", "2024-02-06", "2024-02-09", "2024-02-12", "2024-02-14",
+  "2024-02-19", "2024-02-19", "2024-02-22", "2024-02-26", "2024-02-29",
+  "2024-03-01", "2024-03-01", "2024-03-06", "2024-03-08", "2024-03-08",
+  "2024-03-12", "2024-03-13", "2024-03-15", "2024-03-18", "2024-03-18",
+  "2024-03-19", "2024-03-20", "2024-03-21", "2024-03-22", "2024-03-22",
+  "2024-03-22", "2024-03-25", "2024-03-26", "2024-03-27", "2024-03-28",
+  "2024-03-29", "2024-03-30", "2024-03-31", "2024-01-05", "2024-01-15",
+  "2024-01-25", "2024-02-05", "2024-02-15", "2024-02-26", "2024-03-05"
+))
+```
+
+
+```{r}
+transaction_analysis <- function(dates){
+  # Ensure input is Date format
+  dates <- as.Date(dates)
+  
+  # --- 1. Transactions per month ---
+  transactions_per_month <- table(format(dates, "%Y-%m"))
+  
+  # --- 2. Transactions per day ---
+  transactions_per_day <- table(dates)
+  
+  # Date with most transactions
+  max_transactions <- max(transactions_per_day)
+  date_with_most_transactions <- names(transactions_per_day[transactions_per_day == max_transactions])
+  
+  # --- 3. Days with above-average transactions ---
+  average_transactions <- mean(transactions_per_day)
+  above_average_days <- sum(transactions_per_day > average_transactions)
+  
+  # --- Output as a list ---
+  result <- list(
+    transactions_per_month = transactions_per_month,
+    date_with_most_transactions = date_with_most_transactions,
+    max_transactions = max_transactions,
+    days_above_average = above_average_days
+  )
+  
+  return(result)
+}
+transaction_analysis(transaction_dates)
+```
+
 Problem 5: Sentence Word Count
     • Given a list of 10 sentences about different products, count the number of words in each sentence.
     • Find the sentence with the most words and the one with the fewest.
@@ -206,6 +269,7 @@ four_weekly_increase <- function(weekly){
 ```{r}
 which(week_diff == max(week_diff))
 ```
+
 
 
 
