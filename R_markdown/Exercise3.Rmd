@@ -93,8 +93,6 @@ transaction_dates <- as.Date(c(
   "2024-01-25", "2024-02-05", "2024-02-15", "2024-02-26", "2024-03-05"
 ))
 ```
-
-
 ```{r}
 transaction_analysis <- function(dates){
   # Ensure input is Date format
@@ -121,9 +119,10 @@ transaction_analysis <- function(dates){
     max_transactions = max_transactions,
     days_above_average = above_average_days
   )
-  
   return(result)
 }
+```
+```{r}s
 transaction_analysis(transaction_dates)
 ```
 
@@ -264,6 +263,7 @@ four_weekly_increase <- function(weekly){
 ```{r}
 which(week_diff == max(week_diff))
 ```
+
 
 
 
