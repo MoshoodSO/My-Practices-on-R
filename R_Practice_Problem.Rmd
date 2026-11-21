@@ -1,0 +1,1309 @@
+---
+title: "R_Practice_Problem"
+author: "Shoyombo Moshood Olanrewaju"
+date: "2024-12-26"
+output: html_document
+---
+
+VARIABLES
+1. Assign the values 25, 50, and 100 to variables a, b, and c. Calculate their average and store it in a variable named average. Then, increase a by 10% (so that a becomes 27.5) and calculate the new average. Record the original and new averages, and explain the difference.
+```{r}
+a <- 25
+b <- 50
+c <- 100
+(mn <- mean(a,b,c))
+(mn1 <- mean((1.1*a),b,c))
+mn1 - mn
+```
+The mean increased by the increase in the 25 (2.5).
+
+2. Create two variables: product_cost set to 120 and selling_price set to 150. Calculate the profit margin percentage as (selling_price - product_cost) / product_cost * 100 and store it in a variable named profit_margin. Then, increase selling_price to 180 and calculate the new profit margin. Compare the initial and updated profit margins.
+```{r}
+product_cost <- 120
+selling_price <- 150
+(profit_margin <- (selling_price - product_cost) / product_cost * 100)
+(profit_margin1 <- (180 - product_cost) / product_cost * 100)
+```
+
+3. Define a variable my_string with the sentence "I love playing the guitar." Use nchar(my_string) to count the number of characters in this sentence and store the result in a variable called char_count. Print both my_string and char_count together. Describe what you observe in the output.
+```{r}
+(my_string <- "I love playing the guitar.")
+(char_count <- nchar(my_string))
+```
+
+4. Set a variable called initial_value to 10. Write a function double_value() that doubles initial_value and
+returns the result. Call double_value() with initial_value as input and check if the original initial_value outside
+the function has changed or not. Explain why it changed or didn’t change.
+```{r}
+initial_value <- 10
+double_value <- function(x) 2*x
+double_value(initial_value)
+```
+
+5. Write a function calculate_total() that takes item_price = 15 and quantity = 3 as arguments and returns the
+total cost. Define a global variable tax_rate with a value of 0.1 (10%) and modify calculate_total() to include
+tax in the total cost. Change tax_rate to 0.2 outside the function and call calculate_total() again. Observe
+whether the total changes and explain why.
+```{r}
+calculate_total <- function(item_price = 15, quantity = 3) item_price*quantity
+calculate_total()
+```
+```{r}
+tax_rate <- 0.1
+calculate_total2 <- function(item_price = 15, quantity = 3) item_price*quantity + (tax_rate*item_price*quantity)
+calculate_total2()
+```
+```{r}
+tax_rate <- 0.2
+calculate_total2 <- function(item_price = 15, quantity = 3) item_price*quantity + (tax_rate*item_price*quantity)
+calculate_total2()
+```
+
+6. Create a variable values with a list of numbers values <- c(5, 10, 15). Write a function that calculates both
+the mean and standard deviation of the numbers in values without using mean() or sd(). Return both results
+from the function. Compare your function’s results to R’s mean(values) and sd(values).
+```{r}
+values <- c(5, 10, 15)
+mean_and_sd <- function(values){
+  mn <- sum(values)/length(values)
+  s_sq <- (values - mn)^2
+  stan_dev <- sqrt(sum(s_sq)/(length(s_sq)-1))
+  return(c(mn, stan_dev))
+}
+mean_and_sd(values)
+```
+```{r}
+mean(values)
+sd(values)
+```
+
+7. Set initial_investment to 1000 and define a global variable growth_rate with a value of 0.05 (5% annual
+growth). Write a function investment_growth() that calculates the future value of the investment over 5 years.
+Change growth_rate to 0.1 outside the function and call investment_growth() again. Observe and explain the
+difference in results.
+```{r}
+initial_investment <- 1000
+growth_rate <- 0.05
+investment_growth <- function(years = 5) initial_investment*((1+growth_rate)^years)
+investment_growth()
+```
+```{r}
+initial_investment <- 1000
+growth_rate <- 0.01
+investment_growth <- function(years = 5) initial_investment*((1+growth_rate)^years)
+investment_growth()
+```
+
+8. Set height to 10 and width to 5, representing the dimensions of a rectangle, and calculate the area as height * width. Then, redefine width as a function that returns height * 1.5 and recalculate the area using this function. Explain if redefining width as a function in this case is practical and why.
+```{r}
+height <- 10
+width <- 5
+area <- function(height, width) height*width
+area(height, width)
+```
+```{r}
+height <- 10
+width <-  height * 1.5
+area <- function(height, width) height*width
+area(height, width)
+```
+
+9. Use a for-loop to create three variables, day1, day2, and day3, each assigned a random temperature value in Celsius (use values of 22, 24, and 19 for the temperatures). Calculate the average temperature across these days. Reflect on whether creating individual variables for each day is efficient if you wanted to store temperatures for 100 days instead. Suggest an alternative method.
+```{r}
+temperatures <- numeric(3)
+
+for (i in 1:3) {
+  if (i == 1) temperatures[i] <- 22
+  if (i == 2) temperatures[i] <- 24
+  if (i == 3) temperatures[i] <- 19
+}
+day1 <- temperatures[1]
+day2 <- temperatures[2]
+day3 <- temperatures[3]
+
+average_temperature <- mean(temperatures)
+
+print(paste("Day 1 temperature:", day1, "°C"))
+print(paste("Day 2 temperature:", day2, "°C"))
+print(paste("Day 3 temperature:", day3, "°C"))
+print(paste("Average temperature:", round(average_temperature, 2), "°C"))
+```
+
+10. Create a variable named test_scores to store a list of five scores: 85, 90, 78, 92, 88. Write a function that
+calculates the highest, lowest, and average score from this list. Test the function and explain how using a clear
+name like test_scores improves the readability of the code and its purpose.
+```{r}
+test_scores <- c(85, 90, 78, 92, 88)
+print(paste("The highest score is:", max(test_scores)))
+print(paste("The lowest score is:", min(test_scores)))
+print(paste("The average score is:", mean(test_scores)))
+```
+
+OPERATIONS, DATA TYPES, FUNCTIONS
+1. Assign the following values to variables: x = 42, y = "Hello, R!", z = TRUE, and w = 3.1415. Use the class() function to check each variable's data type. Confirm that x is numeric, y is character, z is logical, and w is numeric.
+```{r}
+x = 42
+y = "Hello, R!"
+z = TRUE
+w = 3.1415
+is.numeric(x)
+is.character(y)
+is.logical(z)
+is.numeric(w)
+```
+
+2. Convert x from Problem 1 to a character using as.character() and assign it to x_char. Then convert z to numeric using as.numeric(). Verify that x_char is character and z becomes 1.
+```{r}
+x_char <- as.character(x)
+is.character(x_char)
+(z_num <- as.numeric(z))
+
+```
+
+3. Define two variables: a = 15 and b = 4. Perform the following operations and store the results: sum (a + b), difference (a - b), product (a * b), quotient (a / b), integer division (a %/% b), and remainder (a %% b). Confirm the values of all results are correct.
+```{r}
+a = 15
+b = 4
+(add <- a+b)
+(diff_ <- a - b)
+(prod_ <- a*b)
+(quotient <- a/b)
+(integer_division <- a %/% b)
+(remainder <- a%%b)
+```
+
+4. Using x = 20 and y = 15, test these comparisons and store each result: x > y, x < y, x == y, x != y, x >= y, x <= y. Confirm the Boolean values returned are as expected.
+```{r}
+x = 20
+y = 15
+x > y
+x < y
+x == y
+x != y
+x >= y
+x <= y
+```
+
+5. Assign p = TRUE and q = FALSE. Evaluate these expressions: p & q, p | q, and !p. Confirm that the results are FALSE, TRUE, and FALSE respectively.
+```{r}
+p = TRUE
+q = FALSE
+p & q
+p | q
+!p
+
+```
+
+6. Create a vector v <- c(1, 2, 3, 4, 5). Calculate the sum of all elements in v, the mean of v, and the product of all elements in v. Confirm the sum is 15, the mean is 3, and the product is 120.
+```{r}
+v <- c(1, 2, 3, 4, 5)
+sum(v)
+mean(v)
+prod(v)
+```
+
+7. Given the vector v <- c(10, 20, 30, 40, 50), extract the second and fourth elements and store them in a new vector subset_v. Verify that subset_v contains only 20 and 40.
+```{r}
+v <- c(10, 20, 30, 40, 50)
+(subset_ <- v[c(2,4)])
+```
+
+8. Write a function square_number that takes a single argument x and returns x squared. Test it with x = 5 and confirm it returns 25.
+```{r}
+square_number <- function(x) x*x
+square_number(5)
+```
+
+9. Create a function calculate_sum that takes two arguments a and b and returns their sum. Test it with a = 7 and b = 10 and confirm it returns 17.
+```{r}
+calculate_sum <- function(a,b) (a+b)
+calculate_sum(7,10)
+```
+
+10. Write a function multiply_numbers that takes two arguments, a and b, with b having a default value of 2. The function should return the product of a and b. Test it with a = 6 (without specifying b) to confirm it returns 12.
+```{r}
+multiply_numbers <- function(a,b = 2) (a*b)
+multiply_numbers(6)
+```
+
+11. Define a function mean_and_sd that takes a vector and returns both its mean and standard deviation. Test it with c(2, 4, 6, 8) and confirm it returns mean = 5 and sd ≈ 2.58.
+```{r}
+mean_and_sd <- function(v){
+  print(paste("The mean is ", mean(v)))
+  print(paste("The standard deviation is ", sd(v)))
+}
+mean_and_sd(c(2, 4, 6, 8))
+```
+
+12. Create a variable str <- "Data Science" and write a function count_characters that returns the number of characters in the string. Test it with str and confirm it returns 12.
+```{r}
+str <- "Data Science"
+count_characters <- function(str) nchar(str)
+count_characters(str)
+```
+
+13. Write a function check_positive that takes a number and returns "Positive" if it’s greater than 0, "Negative" if it’s less than 0, and "Zero" if it’s 0. Test it with x = -5, x = 0, and x = 10 to confirm the function’s accuracy.
+```{r}
+check_positive <- function(x){
+  if(x>0){
+    return("Positive")
+  }else if(x<0){
+    return("Negative")
+  }else{
+    return("Zero")
+  }
+}
+check_positive(-5)
+check_positive(0)
+check_positive(10)
+```
+
+14. Create a vector numbers <- c(10, 20, 30, 40, 50) and add 5 to each element. Verify that the result is c(15, 25, 35, 45, 55).
+```{r}
+numbers <- c(10, 20, 30, 40, 50)
+numbers+5
+```
+
+15. Given two vectors v1 <- c(3, 6, 9) and v2 <- c(1, 6, 8), use a function to check where elements in v1 are greater than the corresponding elements in v2. Verify that the result is TRUE, FALSE, TRUE.
+```{r}
+v1 <- c(3, 6, 9) 
+v2 <- c(1, 6, 8)
+v1>v2
+```
+
+16. Create a 3x3 matrix mat <- matrix(1:9, nrow = 3, byrow = TRUE). Use the apply() function to calculate the sum of each row. Verify that it returns c(6, 15, 24).
+```{r}
+mat <- matrix(1:9, nrow = 3, byrow = TRUE)
+apply(X = mat,MARGIN = 1, FUN = sum)
+```
+
+17. Write a recursive function factorial_recursive that calculates the factorial of a given number. Test it with n = 4 and confirm it returns 24.
+```{r}
+factorial_recursive <- function(n){
+  if(n<0){
+    return("n is negative")
+  }
+  if(n==0 | n==1){
+    return(1)
+  }else{
+    return(n*factorial_recursive(n-1))
+  }
+}
+factorial_recursive(3)
+```
+
+18. Use an anonymous function inside sapply to calculate the square of each element in a vector v <- c(1, 2, 3, 4). Verify that the result is c(1, 4, 9, 16).
+```{r}
+v <- c(1, 2, 3, 4)
+sapply(X = v, FUN = square_number)
+```
+
+19. Create a list student <- list(name = "Alice", age = 20, scores = c(80, 90, 85)). Access the student’s age and confirm it returns 20.
+```{r}
+student <- list(name = "Alice", age = 20, scores = c(80, 90, 85))
+student['age']
+```
+
+20. Write a function outer_function that contains an inner function inner_function. The inner function should return x + 5. outer_function should take a number and use inner_function to add 5 to it. Test outer_function with 10 and confirm it returns 15.
+```{r}
+inner_function <- function(x) x+5
+outer_function <- function(inner_function) inner_function+5
+outer_function(10)  
+```
+
+21. Create a list of numbers num_list <- list(2, 4, 6, 8). Use lapply to find the square root of each number. Verify that the result is a list with values close to 1.41, 2.00, 2.45, and 2.83.
+```{r}
+num_list <- list(2, 4, 6, 8)
+lapply(num_list, sqrt)
+```
+
+22. Create a vector ages <- c(12, 15, 17, 18). Use sapply to check if each age is above 16, returning TRUE or FALSE. Confirm the output is FALSE, FALSE, TRUE, TRUE.
+```{r}
+ages <- c(12, 15, 17, 18)
+greater_16 <- function(x) x>16
+sapply(ages, greater_16)
+```
+
+23. Define two vectors prices <- c(10, 20, 30) and quantities <- c(1, 2, 3). Use mapply to calculate the total cost for each price-quantity pair. Verify that the result is 10, 40, 90.
+```{r}
+prices <- c(10, 20, 30)
+quantities <- c(1, 2, 3)
+mapply(prod,prices,quantities)
+```
+
+24. Create a custom S3 class person by defining a function create_person that takes name and age as arguments and returns a list with class(person). Instantiate a person object with name = "John" and age = 25 and confirm its class using class().
+```{r}
+create_person <- function(name, age) paste(name, age)
+create_person("John",25)
+```
+
+25. Write a function divide_numbers that takes two arguments and returns their quotient. Add error handling so it returns "Cannot divide by zero" if the second argument is 0. Test it with 10 and 0 to confirm it handles the error.
+```{r}
+divide_numbers <- function(num1,num2){
+  if(num2 == 0){
+    return("Cannot divide by zero")
+  }else{
+    return(num1/num2)
+  }
+}
+divide_numbers(10,0)
+```
+
+USING STRINGR
+1. Create a function count_vowels using stringr to take a string as input and return the number of vowels (a, e, i, o, u) in the string Test it with "Hello World" to confirm it returns 3
+```{r}
+library(stringr)
+count_vowels <- function(word){
+  return(str_count(word, "[a,e,i,o,u]"))
+}
+count_vowels("Hello World")
+```
+
+2. Write a function reverse_string using stringr to take a string and return it in reverse order Test it with
+"stringr" to confirm it returns "rgnirts"
+```{r}
+reverse_string <- function(word){
+  return(paste(rev(strsplit(word,NULL)[[1]]),collapse = ""))
+}
+reverse_string("stringr")
+```
+
+3. Use str_count to write a function count_words that takes a sentence and returns the total number of words in it Test it with "The quick brown fox" to confirm it returns 4
+```{r}
+count_words <- function(word){
+  return(str_count(word, "[A-z0-9]+"))
+}
+count_words("The quick brown fox")
+```
+
+4. Define a function replace_vowels using str_replace_all to take a string and replace all vowels with an  asterisk (*) Test it with "Data Science" to confirm it returns "D*t* Sc**nc*"
+```{r}
+replace_vowels <- function(word){
+  return(str_replace_all(word,"[a,e,i,o,u]","*"))
+}
+replace_vowels("Data Science")
+```
+
+5. Write a function extract_first_word using str_extract to find and return the first word in a given sentence Test it with "R programming is fun" to confirm it returns "R"
+```{r}
+extract_first_word <- function(word){
+  return(str_extract(word,"[A-z]+"))
+}
+extract_first_word("R programming is fun")
+```
+
+6. Create a function detect_word using str_detect to take a string and a target word returning TRUE if the target word is found and FALSE otherwise Test it with "Learning R is enjoyable" and the target word "enjoyable" to confirm it returns TRUE
+```{r}
+detect_word <- function(word, target){
+  return(str_detect(word,target))
+}
+detect_word("Learning R is enjoyable", "enjoyable")
+```
+
+7. Write a function get_word_lengths using str_length to take a sentence and return a vector with the length of each word Test it with "Data analysis is insightful" to confirm it returns c(4, 8, 2, 10)
+```{r}
+get_word_lengths <- function(word){
+  return(str_length(word))
+}
+lapply(strsplit("Data analysis is insightful"," "), get_word_lengths)[[1]]
+```
+
+8. Use str_to_upper to create a function to_uppercase that converts a string to uppercase Test it with "openAI" to confirm it returns "OPENAI"
+```{r}
+to_uppercase <- function(word){
+  return(str_to_upper(word))
+}
+to_uppercase("openAI")
+```
+
+9. Write a function get_substring using str_sub to extract a substring from the 4th to the 8th character of any input string Test it with "hello world" to confirm it returns "lo wo"
+```{r}
+get_substring <- function(word){
+  return(str_sub(word,4,8))
+}
+get_substring("hello world")
+```
+
+10. Define a function remove_punctuation using str_replace_all to take a sentence and remove all punctuation marks Test it with "Hello, world!" to confirm it returns "Hello world"
+```{r}
+remove_punctuation <- function(word){
+  return(str_replace_all(word, "[,./?!']",""))
+}
+remove_punctuation("Hello, world!")
+```
+
+11. Write a function count_character_occurrences using str_count to take a string and a target character and return how many times the target character appears in the string Test it with "Mississippi" and the target character "s" to confirm it returns 4
+```{r}
+count_character_occurrences <- function(word, target){
+  return(str_count(word, target))
+}
+count_character_occurrences("Mississippi","s")
+```
+
+12. Create a function pad_string using str_pad to take a string and add spaces to the left until the string reaches a total length of 10 Test it with "R" to confirm it returns "R"
+```{r}
+pad_string <- function(word){
+  return(str_pad(string = word,width = 10,side = "left",pad = " "))
+}
+pad_string("R")
+```
+
+13. Define a function trim_whitespace using str_trim to remove any leading and trailing whitespace from a string Test it with " stringr functions " to confirm it returns "stringr functions"
+```{r}
+trim_whitespace <- function(word){
+  return(str_trim(string = word,side = "both"))
+}
+trim_whitespace(" stringr functions ")
+```
+
+14. Write a function repeat_word using str_dup to repeat a word n times separated by a space Test it with the word "code" and n = 3 to confirm it returns "code code code"
+```{r}
+repeat_word <- function(word,n){
+  return(str_dup(string = word,times = n))
+}
+repeat_word("code ", 3)
+```
+
+15. Use str_starts to create a function starts_with_letter that takes a string and a letter and returns TRUE if the string starts with that letter and FALSE otherwise Test it with "Data Science" and letter "D" to confirm it returns TRUE
+```{r}
+starts_with_letter <- function(word, start_){
+  return(str_starts(string = word,pattern = start_))
+}
+starts_with_letter("Data Science","D")
+```
+
+16. Write a function count_sentences using str_count to take a paragraph of text and count the number of sentences Test it with "Hello! How are you? This is R programming." to confirm it returns 3
+```{r}
+count_sentences <- function(word){
+  return(str_count(string = word, pattern = "[!.?]"))
+}
+count_sentences("Hello! How are you? This is R programming.")
+```
+
+17. Define a function find_position using str_locate to find the position of the first occurrence of a specified character in a string Test it with "programming" and the character "m" to confirm it returns 7
+```{r}
+find_position <- function(word,l){
+  return(str_locate(string = word,pattern = l)[1])
+}
+find_position("programming","m")
+```
+
+18. Create a function ends_with_phrase using str_ends that takes a string and a phrase and returns TRUE if the string ends with that phrase and FALSE otherwise Test it with "Learning data science" and "science" to confirm it returns TRUE
+```{r}
+ends_with_phrase <- function(word,let){
+  return(str_ends(word,let))
+}
+ends_with_phrase("Learning data science", "science")
+```
+
+19. Write a function extract_last_word using str_extract to extract and return the last word of a given sentence Test it with "Practice makes perfect" to confirm it returns "perfect"
+```{r}
+extract_last_word <- function(word){
+  n = length(strsplit(word," ")[[1]])
+  return(strsplit(word," ")[[1]][n])
+}
+extract_last_word("Practice makes perfect")
+```
+
+20. Define a function replace_word using str_replace_all that replaces all occurrences of a target word in a sentence with a replacement word Test it with "Data is powerful" replacing "powerful" with "valuable" to confirm it returns "Data is valuable"
+```{r}
+replace_word <- function(word, tar, repl){
+  return(str_replace_all(string = word,pattern = tar,replacement = repl))
+}
+replace_word("Data is powerful","powerful","valuable")
+```
+
+21. Use str_sub to write a function abbreviate that takes a multi-word phrase and returns only the first letter of each word in uppercase joined together Test it with "world wide web" to confirm it returns "WWW"
+```{r}
+abbreviate_word <- function(word){
+  ab <- str_sub(string = strsplit(word," ")[[1]],start = 1,end = 1)
+  return(paste(str_to_upper(ab), collapse = ""))
+}
+abbreviate_word("world wide web")
+```
+
+22. Write a function detect_numbers using str_extract_all to take a string and return a vector of any numbers found within it Test it with "Room 101 is on floor 2" to confirm it returns c("101", "2")
+```{r}
+detect_numbers <- function(word){
+  return(str_extract_all(string = word,pattern = "[0-9]+")[[1]])
+}
+detect_numbers("Room 101 is on floor 2")
+```
+
+23. Create a function capitalize_words using str_to_title that capitalizes the first letter of each word in a sentence Test it with "r programming is amazing" to confirm it returns "R Programming Is Amazing"
+```{r}
+capitalize_words <- function(word){
+  return(str_to_title(string = word))
+}
+capitalize_words("r programming is amazing")
+```
+
+24. Define a function split_sentence using str_split to take a sentence and split it into words returning a list. Test it with "Exploring R functions" to confirm it returns c("Exploring", "R", "functions")
+```{r}
+split_sentence <- function(word){
+  return(str_split(word," ")[[1]])
+}
+split_sentence("Exploring R functions")
+```
+
+25. Write a function remove_digits using str_replace_all that removes all digits from a string Test it with "R version 4.0.2" to confirm it returns "R version .
+```{r}
+remove_digits <- function(word){
+  return(str_replace_all(word,"[0-9,.]","")[[1]])
+}
+remove_digits("R version 4.0.2")
+```
+
+
+"USING LUBRIDATE
+1. Create a function current_date that uses lubridate to return today’s date. Confirm that the function outputs the correct current date.
+```{r}
+library(lubridate)
+current_date <- function(x) today()
+current_date()
+```
+
+2. Write a function parse_date that takes a string in the format "2024-12-25" and converts it to a Date object using lubridate’s ymd function. Test it with "2024-12-25" and confirm it outputs the correct Date object.
+```{r}
+parse_date <- function(str){
+  return(ymd(str))
+}
+parse_date("2024-12-25")
+```
+
+3. Define a function add_days that takes a date and a number of days to add, returning the new date. Test it with "2024-01-01" and 10 days to confirm it returns "2024-01-11".
+```{r}
+add_days <- function(date, days){
+  return(ymd(date) + days(days))
+}
+add_days("2024-01-01",10)
+```
+
+4. Create a function day_of_week that takes a date and returns the day of the week. Test it with "2024-11-01" to confirm it returns "Friday".
+```{r}
+day_of_week <- function(date){
+  return(weekdays(ymd(date)))
+}
+day_of_week("2024-11-01")
+```
+
+5. Write a function calculate_age that takes a birthdate as input and returns the person’s age in years as of today. Test it with "2000-05-15" and confirm it returns the correct age.
+```{r}
+calculate_age <- function(date){
+  wk <- difftime(time1 = today(),time2 = ymd(date),units = "weeks")[[1]]
+  return(wk%/%52)
+}
+calculate_age("2000-05-15")
+```
+```{r}
+calculate_age2 <- function(date){
+  return(year(today()) - year(as.Date(date)))
+}
+calculate_age2("2000-05-15")
+
+```
+
+6. Use lubridate to write a function is_leap_year that checks if a given year is a leap year. Test it with 2024 to confirm it returns TRUE.
+```{r}
+is_leap_year <- function(date){
+  return(leap_year(date))
+}
+is_leap_year(2024)
+```
+
+
+7. Create a function difference_in_days that calculates the number of days between two given dates. Test it with "2024-01-01" and "2024-01-15" to confirm it returns 14.
+```{r}
+difference_in_days <- function(date1, date2) abs(ymd(date1) - ymd(date2))
+difference_in_days("2024-01-01" , "2024-01-15")
+```
+
+8. Define a function start_of_month that takes a date and returns the first day of that month. Test it with "2024-03-15" to confirm it returns "2024-03-01".
+```{r}
+start_of_month2<- function(date1){
+  return(floor_date(
+  x=as.Date(date1),
+  unit = "month"))
+}
+start_of_month("2023-03-15")
+```
+
+9. Write a function end_of_month that takes a date and returns the last day of that month. Test it with "2024-02-10" to confirm it returns "2024-02-29".
+```{r}
+end_of_month <- function(date1){
+  return(as.Date(date1) + days_in_month(as.Date(date1))[[1]] -day(as.Date(date1)))
+}
+end_of_month("2023-02-28")
+end_of_month("2024-02-28")
+```
+
+10. Use lubridate to create a function add_months that adds a specified number of months to a given date. Test it with "2024-01-15" and 2 months to confirm it returns "2024-03-15".
+```{r}
+add_months <- function(date1,month2){
+  return(as.Date(as.Date(date1) + dmonths(month2)))
+}
+add_months("2023-01-15",2)
+```
+
+11. Define a function week_of_year that takes a date and returns the week number of that date within the year. Test it with "2024-01-15" to confirm it returns the correct week number.
+```{r}
+week_of_year <- function(date1){
+  return(week(as.Date(date1)))
+}
+week_of_year("2023-01-15")
+```
+
+12. Create a function days_in_month that takes a date and returns the number of days in the month of that date. Test it with "2024-02-01" to confirm it returns 29.
+```{r}
+days_in_a_month <- function(date){
+  next1 <- as.Date(date) + months(1) - days(day(as.Date(date)))
+  return(day(next1))
+}
+days_in_a_month("2024-02-01")
+```
+
+13. Write a function quarter_of_year that takes a date and returns the quarter (1, 2, 3, or 4) of that date within the year. Test it with "2024-07-15" to confirm it returns 3.
+```{r}
+quarter_of_year <- function(date1){
+  return(month(as.Date(date1))%/%3 + 1)
+}
+quarter_of_year("2024-07-15")
+```
+
+14. Define a function add_weeks that adds a specified number of weeks to a given date. Test it with "2024-01-01" and 3 weeks to confirm it returns "2024-01-22".
+```{r}
+add_weeks <- function(date1, week_num){
+  return(as.Date(date1) + weeks(week_num))
+}
+add_weeks("2024-01-01",3)
+```
+
+15. Create a function time_difference_in_seconds that calculates the difference in seconds between two datetime values. Test it with "2024-01-01 10:00:00" and "2024-01-01 10:05:00" to confirm it returns 300.
+```{r}
+time_difference_in_seconds <- function(datetime1, datetime2){
+  return(abs(difftime(time1 = datetime1,time2 = datetime2, units = "secs")))
+}
+time_difference_in_seconds("2024-01-01 10:00:00","2024-01-01 10:05:00")
+```
+
+16. Write a function is_weekend that takes a date and returns TRUE if it falls on a weekend and FALSE
+otherwise. Test it with "2024-11-03" to confirm it returns TRUE.
+```{r}
+is_weekend <- function(date1){
+  if(wday(as.Date(date1)) == 7 | wday(as.Date(date1)) == 1){
+    return(TRUE)
+  }
+  return(FALSE)
+}
+is_weekend("2023-11-05")
+```
+
+17. Define a function add_years that adds a specified number of years to a given date. Test it with "2024-01-01" and 5 years to confirm it returns "2029-01-01".
+```{r}
+add_years <- function(date,n){
+  return(as.Date(date) + years(n))
+}
+add_years("2024-01-01",5)
+```
+
+18. Create a function format_date that takes a date and returns it in the format "Month Day, Year" (e.g.,"January 1, 2024"). Test it with "2024-01-01" to confirm it returns "January 1, 2024".
+```{r}
+format_date <- function(date1){
+  date_result = c(months(as.Date(date1)), day(as.Date(date1)), ',',
+                  year(as.Date(date1)))
+  return(paste(date_result, collapse = ' '))
+}
+format_date("2024-01-01")
+```
+
+19. Write a function date_in_timezone that takes a datetime and a timezone as inputs and returns the datetime in the specified timezone. Test it with "2024-01-01 12:00:00" and "America/New_York" to confirm it returns the correct time in that timezone.
+```{r}
+date_in_timezone <- function(datetime,timezone){
+  return(with_tz(ymd_hms(datetime), timezone))
+}
+date_in_timezone("2023-01-01 12:00:00","America/New_York")
+```
+
+20. Define a function round_to_nearest_hour that rounds a datetime to the nearest hour. Test it with "2024-01-01 10:30:00" to confirm it returns "2024-01-01 11:00:00".
+```{r}
+round_to_nearest_hour <- function(datetime){
+  return(ceiling_date(
+  x=as_datetime(datetime),
+  unit = "hour"))
+}
+round_to_nearest_hour("2024-01-01 10:30:00")
+```
+
+21. Write a function is_daylight_saving that checks if a given date is in daylight saving time for a specified timezone. Test it with "2024-07-01" in "America/New_York" to confirm it returns TRUE.
+```{r}
+is_daylight_saving <- function(date, tz = "America/New_York") {
+  date_with_tz <- with_tz(date, tz)
+  is_dst <- dst(date_with_tz)
+  return(is_dst)
+}
+is_daylight_saving("2024-07-01")
+```
+
+22. Create a function difference_in_months that calculates the number of months between two given dates. Test it with "2024-01-01" and "2024-06-01" to confirm it returns 5.
+```{r}
+difference_in_months <- function(date1,date2){
+  return(abs(month(as.Date(date1))-month(as.Date(date2))))
+}
+difference_in_months("2024-01-01", "2024-06-01")
+```
+
+23. Define a function difference_in_years that calculates the number of years between two given dates. Test it with "2020-01-01" and "2024-01-01" to confirm it returns 4.
+```{r}
+difference_in_years <- function(date1,date2){
+  return(abs(year(as.Date(date1))-year(as.Date(date2))))
+}
+difference_in_years("2020-01-01", "2024-01-01")
+```
+
+24. Write a function next_friday that takes a date and returns the date of the next Friday. Test it with "2024-01-01" to confirm it returns "2024-01-05".
+```{r}
+next_friday <- function(date1){
+  next_fri <- ceiling_date(x = as.Date(date1),unit = "weeks") - days(2)
+  return(next_fri )
+}
+next_friday("2024-01-01")
+```
+
+25. Create a function is_same_day that takes two dates and returns TRUE if they are the same day, and FALSE otherwise. Test it with "2024-01-01" and "2024-01-01" to confirm it returns TRUE.
+```{r}
+is_same_day <- function(date1, date2) as.Date(date1) == as.Date(date2)
+is_same_day("2024-01-01" , "2024-01-01" )
+```
+
+
+
+FOR, WHILE, and IF
+1. Write a for loop that prints the numbers from 1 to 10. Confirm that the output displays all numbers from 1 to 10.
+```{r}
+for(i in 1:10){
+  print(i)
+}
+
+```
+
+2. Create a for loop that iterates through a vector of numbers c(2, 4, 6, 8) and prints each number squared. Verify that the output displays 4, 16, 36, and 64.
+```{r}
+for(i in c(2, 4, 6, 8)){
+  print(i^2)
+}
+```
+
+3. Define a function sum_vector that uses a for loop to calculate the sum of all elements in a vector. Test it with c(1, 2, 3, 4) to confirm it returns 10.
+```{r}
+sum_vector <- function(vec){ res = 0
+  for(i in vec){
+    res <- res + i
+  }
+return(res)
+}
+sum_vector(c(1, 2, 3, 4))
+```
+
+4. Write a for loop that iterates over a vector of names c("Alice", "Bob", "Charlie") and prints "Hello, <name>!" for each name. Confirm that the output displays "Hello, Alice!", "Hello, Bob!", and "Hello, Charlie!".
+```{r}
+nam <- c("Alice", "Bob", "Charlie")
+for(i in nam){
+  print(paste(c("Hello, ", i, "!"), collapse = ""))
+}
+```
+
+5. Create a for loop that prints only the even numbers from 1 to 20. Confirm that the output displays 2, 4, 6,..., 20.
+```{r}
+for(i in 1:10){
+  print(2*i)
+}
+```
+
+6. Write an if statement that checks if a number is positive, negative, or zero and prints an appropriate message. Test it with -5, 0, and 10 to confirm it outputs the correct message each time.
+```{r}
+x <- -5
+if(x < 0){
+    print("negative")
+  }else if(x > 0){
+    print("positive")
+  }else{
+    print("zero")
+  }
+```
+
+
+7. Define a function check_number that takes a number and uses if-else to return "Positive" if the number is positive, "Negative" if it's negative, and "Zero" if it's zero. Test it with -3, 0, and 7.
+```{r}
+check_number <- function(x){
+  if(x < 0){
+    return("negative")
+  }else if(x > 0){
+    return("positive")
+  }else{
+    return("zero")
+  }
+}
+check_number(-5)
+check_number(0)
+check_number(10)
+```
+
+8. Write an if-else statement to check if a given year is a leap year. The rules are that the year is a leap year if it’s divisible by 4 but not by 100, except if it’s also divisible by 400. Test it with 2020, 1900, and 2000 to confirm it returns the correct result each time.
+```{r}
+is_leap <- function(x){
+  if((x%%4 == 0 && x %% 100 != 0) | (x%%400 == 0)){
+    return(TRUE)
+  }else{
+    return(FALSE)
+  }
+}
+is_leap(2020)
+is_leap(1900)
+is_leap(2000)
+```
+
+9. Create a function grade_student that takes a score as input and uses if-else statements to return "A" for scores 90 and above, "B" for 80-89, "C" for 70-79, "D" for 60-69, and "F" for scores below 60. Test it with scores 95, 85, 75, 65, and 55.
+```{r}
+grade_student <- function(x){
+  if(x>=90){
+    return("A")
+  }else if(x>=80){
+    return("B")
+  }else if(x>=70){
+    return("C")
+  }else if(x>=60){
+    return("D")
+  }else{
+    return("F")
+  }
+}
+grade_student(95)
+grade_student(85)
+grade_student(75)
+grade_student(65)
+grade_student(55)
+```
+
+10. Use a while loop to print numbers from 1 to 5. Confirm that the output shows 1, 2, 3, 4, and 5.
+```{r}
+i <- 1
+while (i<=5) {
+  print(i)
+  i <- 1 + i
+}
+```
+
+11. Write a while loop that prints "Learning R" three times. Confirm that the output shows "Learning R" three times.
+```{r}
+i<-1
+while (i<=3) {
+  print("Learning R")
+  i <- i + 1
+}
+```
+
+12. Create a while loop that doubles a variable x starting from 1 and stops when x is greater than 100. Print the value of x at each step. Confirm that the final printed value is greater than 100.
+```{r}
+x <- 1
+while (x <= 100) {
+  x <- x * 2
+  print(paste("x =", x))
+}
+
+```
+
+13. Write a while loop that takes a variable n starting from 10 and decrements it by 1 in each loop iteration, stopping when n reaches 0. Confirm that the loop stops at 0.
+```{r}
+n <- 10
+while(n >= 0){
+  print(n)
+  n <- n-1
+}
+```
+
+14. Define a function sum_until_limit that uses a while loop to keep adding 1 to a total variable starting from 0 until the total reaches or exceeds a given limit. Test it with a limit of 10 and confirm it returns 10.
+```{r}
+sum_until_limit <- function(n){
+  res <- 0
+  n<- 1
+  while(n<=10){
+    res <- res+1
+    n <- n + 1
+  }
+  return(res)
+}
+sum_until_limit(10)
+```
+
+15. Write a for loop that prints each character in the string "data". Confirm that the output shows "d", "a", "t", and "a".
+```{r}
+for(i in strsplit("data","")[[1]]){
+  print(i)
+}
+```
+
+16. Use a for loop to iterate over a list of numbers c(5, 10, 15, 20) and calculate the cumulative sum at each step. Print the cumulative sum after each addition. Confirm that the output is 5, 15, 30, and 50.
+```{r}
+v <-  c(5, 10, 15, 20)
+cum <- 0
+for(i in v){ 
+  cum <- cum + i
+  print(cum)
+}
+```
+
+17. Create a function count_down that takes a starting number and uses a while loop to print the numbers down to 1. Test it with the starting number 5 to confirm it prints 5, 4, 3, 2, and 1.
+```{r}
+count_down <- function(n){
+  while(n != 0){
+    print(n)
+    n<-n-1
+  }
+}
+count_down(5)
+```
+
+18. Write a for loop that calculates the factorial of a given number n by multiplying numbers from 1 to n. Test it with n = 4 and confirm it returns 24.
+```{r}
+fac <- 1
+n<-4
+for(i in 1:n){ 
+  fac <- fac*i
+}
+print(fac)
+```
+
+19. Use an if-else statement to create a function even_or_odd that takes a number and returns "Even" if the number is even and "Odd" if it’s odd. Test it with 7 and 10.
+```{r}
+even_or_odd <- function(x){
+  ifelse(x%%2==0, "Even", "Odd")
+}
+even_or_odd(7)
+even_or_odd(10)
+```
+
+20. Write a nested for loop to create a multiplication table from 1 to 5. Each row should represent one number’s multiplication results (e.g., for 2, it should display 2, 4, 6, 8, 10). Confirm the table displays correctly.
+```{r}
+for(i in 1:5){
+  print(i*1:5)
+}
+```
+
+21. Create a function find_first_multiple that uses a while loop to find the first multiple of 7 greater than 50. Confirm that it returns 56.
+```{r}
+find_first_multiple <- function(x){
+  res <- x
+  while (res < 50) {
+    res <- res + x
+  }
+  return(res)
+}
+find_first_multiple(7)
+```
+
+22. Write a while loop to continuously generate random numbers between 1 and 10 until the number 5 is generated. Print each number generated and stop when 5 appears. Confirm that the loop stops at 5.
+```{r}
+n<-1
+while(n != 5){
+  n = sample(1:10,1,replace = T)
+  print(n)
+}
+```
+
+23. Use a for loop with an if statement inside it to count how many numbers from 1 to 20 are divisible by 3. Confirm that it returns 6.
+```{r}
+n<-0
+for(i in 1:20){
+  if(i%%3 == 0){
+    n<-n+1
+  }
+}
+print(n)
+
+```
+
+24. Define a function repeat_until_limit that takes a number and keeps doubling it in a while loop until it exceeds a given limit. Test it with starting number 2 and limit 100 to confirm it returns a number greater than 100.
+```{r}
+repeat_until_limit <- function(n){
+  res <- n
+  while(res < 100){
+    res <- res * 2
+  }
+  return(res)
+}
+repeat_until_limit(2)
+```
+
+25. Write a function nested_loops_sum that uses nested for loops to add up all pairs of numbers from two vectors c(1, 2, 3) and c(4, 5, 6). Confirm that it returns the sum of all pairs.
+```{r}
+nested_loops_sum <- function(v1, v2){
+  for(i in v1){
+    for(j in v2){
+      ij <- i + j
+      print(ij)
+    }
+  }
+}
+nested_loops_sum(c(1, 2, 3), c(4, 5, 6))
+```
+
+
+VECTORS
+1. Write a function sum_vector that takes a numeric vector as input and returns the sum of all elements in the vector. Test it with c(1, 2, 3, 4, 5) and confirm it returns 15.
+```{r}
+sum_vector <- function(v){ r <- 0
+  for(i in v){
+    r <- r + i
+  }
+return(r)
+}
+sum_vector(c(1, 2, 3, 4, 5))
+```
+
+2. Create a function mean_vector that calculates the mean of a numeric vector. Test it with c(10, 20, 30, 40) to confirm it returns 25.
+```{r}
+mean_vector <- function(v) sum_vector(v)/length(v)
+mean_vector(c(10, 20, 30, 40))
+```
+
+3. Define a function min_max_difference that returns the difference between the maximum and minimum values in a numeric vector. Test it with c(3, 7, 1, 9, 4) and confirm it returns 8.
+```{r}
+min_max_difference <- function(v){
+  return(max(v) - min(v))
+}
+min_max_difference(c(3, 7, 1, 9, 4))
+```
+
+4. Write a function count_positive_numbers that takes a numeric vector and returns the count of positive numbers in it. Test it with c(-5, 3, -1, 6, 2) to confirm it returns 3.
+```{r}
+count_positive_numbers <- function(vec){
+  return(sum(vec>0))
+}
+count_positive_numbers(c(-5, 3, -1, 6, 2))
+```
+
+5. Create a function product_of_elements that calculates the product of all elements in a numeric vector. Test it with c(2, 3, 4) and confirm it returns 24.
+```{r}
+product_of_elements <- function(vec){ r <- 1
+  for(i in vec){
+    r <- r * i
+  }
+return(r)
+}
+product_of_elements(c(2, 3, 4))
+```
+
+6. Define a function find_even_numbers that returns a vector containing only the even numbers from an input vector. Test it with c(1, 2, 3, 4, 5, 6) to confirm it returns c(2, 4, 6).
+```{r}
+find_even_numbers <- function(vec){
+  return(vec[vec%%2 == 0])
+}
+find_even_numbers( c(1, 2, 3, 4, 5, 6))
+```
+
+7. Write a function replace_negatives_with_zero that takes a numeric vector and replaces all negative numbers with zero. Test it with c(-3, 5, -1, 4) to confirm it returns c(0, 5, 0, 4).
+```{r}
+replace_negatives_with_zero <- function(vec){res <- c()
+  for(i in vec){
+    res <- c(res, ifelse(i<0,0,i))
+  }
+return(res)
+}
+
+replace_negatives_with_zero(c(-3, 5, -1, 4))
+```
+
+8. Create a function sum_of_squares that returns the sum of the squares of each element in a numeric vector. Test it with c(1, 2, 3) to confirm it returns 14.
+```{r}
+sum_of_squares <- function(vec){
+  return(sum_vector(vec^2))
+}
+sum_of_squares(c(1, 2, 3))
+```
+
+9. Define a function count_values_above_threshold that takes a numeric vector and a threshold value and returns the count of elements greater than the threshold. Test it with c(3, 7, 10, 1, 6) and threshold 5 to confirm it returns 3.
+```{r}
+count_values_above_threshold <- function(vec,t){
+  return(sum(vec>t))
+}
+count_values_above_threshold(c(3, 7, 10, 1, 6),5)
+```
+
+10. Write a function reverse_vector that takes a vector as input and returns it in reverse order. Test it with c(1, 2, 3, 4) to confirm it returns c(4, 3, 2, 1).
+```{r}
+reverse_vector <- function(vec){res <- c()
+  for(i in vec){
+    res <- c(i,res)
+  }
+return(res)
+}
+reverse_vector(c(1, 2, 3, 4))
+```
+
+11. Create a function normalize_vector that scales all elements of a numeric vector to fall between 0 and 1. Test it with c(10, 20, 30, 40) and confirm the values are between 0 and 1.
+```{r}
+normalize_vector <- function(vec){
+  mn <- min(vec)
+  mx <- max(vec)
+  return((vec - mn)/(mx - mn))
+}
+normalize_vector(c(10, 20, 30, 40))
+```
+
+12. Define a function standard_deviation that calculates the standard deviation of a numeric vector. Test it with c(5, 10, 15, 20, 25) to confirm it returns approximately 7.91.
+```{r}
+standard_deviation <- function(vec){
+  sm <- (vec - mean_vector(vec))^2
+  return(sqrt(sum(sm)/(length(sm)-1)))
+}
+standard_deviation(c(5, 10, 15, 20, 25))
+```
+
+13. Write a function elementwise_sum that takes two vectors of the same length and returns a vector with their elementwise sum. Test it with c(1, 2, 3) and c(4, 5, 6) to confirm it returns c(5, 7, 9).
+```{r}
+elementwise_sum <- function(vec1, vec2) vec1 + vec2
+elementwise_sum(c(1, 2, 3), c(4, 5, 6))
+```
+
+14. Create a function moving_average that calculates the moving average of a numeric vector with a specified window size. Test it with c(1, 2, 3, 4, 5) and a window size of 3 to confirm it returns c(2, 3, 4).
+```{r}
+moving_average <- function(vec, n){
+  res <- c()
+  i<-1
+  while(i+(n-1)<=length(vec)){
+    b <- mean(vec[i:(i+(n-1))])
+    i<-i+1
+    res <- c(res, b)
+  }
+  return(res)
+}
+moving_average(c(1, 2, 3, 4, 5),2)
+```
+
+15. Define a function find_max_index that returns the index of the maximum value in a numeric vector. Test it
+with c(5, 10, 15, 8) to confirm it returns 3.
+```{r}
+find_max_index <- function(vec){
+  return(which.max(vec))
+}
+find_max_index(c(5, 10, 15, 8))
+```
+
+16. Write a function scale_vector that takes a numeric vector and scales it by a given factor. Test it with c(2, 4, 6) and a factor of 3 to confirm it returns c(6, 12, 18).
+```{r}
+scale_vector <- function(vec,scales){
+  return(vec*scales)
+}
+scale_vector(c(2, 4, 6),3)
+```
+
+17. Create a function detect_na that returns TRUE if there are any NA values in a numeric vector and FALSE otherwise. Test it with c(1, NA, 3) to confirm it returns TRUE.
+```{r}
+detect_na <- function(vec){
+  fiz <- is.na(vec)
+  if(sum(fiz) == 0){
+    return(FALSE)
+  }else{
+    return(TRUE)
+  }
+}
+
+detect_na(c(1, NA, 3))
+```
+
+18. Define a function remove_na that removes all NA values from a numeric vector. Test it with c(1, NA, 2, 3, NA) to confirm it returns c(1, 2, 3).
+```{r}
+remove_na <- function(vec){
+  return(vec[!is.na(vec)])
+}
+remove_na(c(1, NA, 2, 3, NA))
+```
+
+19. Write a function cumulative_sum that returns the cumulative sum of elements in a numeric vector. Test it with c(1, 2, 3, 4) to confirm it returns c(1, 3, 6, 10).
+```{r}
+cumulative_sum <- function(vec){
+  j <- 0
+  res <- c()
+  for(i in vec){
+    j <- i + j
+    res <- c(res,j)
+  }
+  return(res)
+}
+cumulative_sum(c(1, 2, 3, 4))
+```
+
+20. Create a function replace_below_threshold that takes a numeric vector and replaces all elements below a
+specified threshold with that threshold value. Test it with c(2, 5, 8, 1) and threshold 3 to confirm it returns
+c(3, 5, 8, 3).
+```{r}
+replace_below_threshold <- function(vec,t){
+  res <- c()
+  for(i in vec){
+    res <- c(res, ifelse(i<t,t,i))
+  }
+return(res)
+}
+replace_below_threshold(c(2, 5, 8, 1),3)
+```
+
+21. Define a function find_unique_values that returns a vector of unique values from an input vector. Test it with c(1, 2, 2, 3, 3, 3, 4) to confirm it returns c(1, 2, 3, 4).
+```{r}
+find_unique_values <- function(vec)unique(vec)
+find_unique_values(c(1, 2, 2, 3, 3, 3, 4))
+```
+
+22. Write a function sort_vector_desc that sorts a numeric vector in descending order. Test it with c(3, 1, 4,
+1, 5) to confirm it returns c(5, 4, 3, 1, 1).
+```{r}
+sort_vector_desc <- function(vec){
+  return(reverse_vector(sort(vec)))
+}
+sort_vector_desc(c(3, 1, 4,1, 5))
+```
+
+23. Create a function vector_median that calculates the median of a numeric vector. Test it with c(1, 3, 3, 6, 7,
+8, 9) to confirm it returns 6.
+```{r}
+vector_median <- function(vec){
+  vec1 <- sort(vec)
+  n <- length(vec1)
+  if(n%%2 == 1){
+    return(vec[(n+1)/2])
+  }else{
+    return((vec[n/2] + vec[n/2 +1])/2)
+  }
+}
+vector_median(c(1, 3, 3, 6, 7, 8, 9) )
+```
+
+24. Define a function z_scores that calculates the z-scores for a numeric vector. Test it with c(10, 20, 30) and
+confirm the z-scores have a mean close to 0.
+```{r}
+z_scores <- function(vec){
+  mn <- mean_vector(vec)
+  s_d <- standard_deviation(vec)
+  return((vec - mn)/s_d)
+}
+z_scores(c(10, 20, 30))
+```
+```{r}
+mean(z_scores(c(10, 20, 30)))
+```
+
+25. Write a function repeat_elements that takes a vector and an integer n and repeats each element in the vector n times. Test it with c(1, 2, 3) and n = 2 to confirm it returns c(1, 1, 2, 2, 3, 3).
+```{r}
+repeat_elements <- function(vec , n){
+  res<-c()
+  for(i in vec){
+    b <- rep(i,n)
+    res <- c(res, b)
+  }
+  return(res)
+}
+repeat_elements(c(1, 2, 3),2)
+```
+
+
+
+
