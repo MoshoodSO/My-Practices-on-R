@@ -2,6 +2,10 @@
 
 Welcome to my **R Practice Repository**, a collection of hands-on exercises and R Markdown analyses created while learning R programming, data analysis, statistical computing, and visualization.
 
+## 👤 Author
+
+Created and maintained by [MoshoodSO](https://github.com/MoshoodSO).
+
 ## 📁 Repository Structure
 
 ```text
