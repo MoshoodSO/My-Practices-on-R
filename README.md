@@ -1,76 +1,79 @@
-## 📊 R Practice Repository
+# 📊 R Practice Repository
 
-Welcome to my *R Practice Repository* — a curated collection of my learning journey in *R programming*, focusing on data analysis, statistical computing, and visualization.
+Welcome to my **R Practice Repository**, a collection of hands-on exercises and R Markdown analyses created while learning R programming, data analysis, statistical computing, and visualization.
 
----
+## 📁 Repository Structure
 
-## 📁 Contents
+```text
+My-Practices-on-R/
+├── README.md
+├── R_markdown/
+│   ├── Exercise1.Rmd
+│   ├── Exercise2.Rmd
+│   ├── Exercise3.Rmd
+│   └── R_Practice_Problem.Rmd
+└── practice_questions/
+    ├── Exercise 1.docx
+    ├── Exercise 2.docx
+    └── Exercise 3.docx
+```
 
-- *`/Basics`*  
-  Core R concepts, syntax, and foundational operations — including variables, data types, loops, conditionals, and basic functions.
+- **`R_markdown/`** — R Markdown documents containing exercises and practice problems with R code, explanations, and results.
+  - `Exercise1.Rmd` — Solution and analysis for Exercise 1.
+  - `Exercise2.Rmd` — Solution and analysis for Exercise 2.
+  - `Exercise3.Rmd` — Solution and analysis for Exercise 3.
+  - `R_Practice_Problem.Rmd` — A comprehensive R practice problem and solution.
 
-- *`/Data_Analysis`*  
-  Hands-on examples of exploratory data analysis (EDA), data cleaning, transformation, and visualization using packages like `dplyr`, `ggplot2`, and `tidyr`.
-
-- *`/Projects`*  
-  Real-world mini-projects that apply R skills to solve data problems, build insights, and create reproducible analyses.
-
-- *`/Exercises`*  
-  A collection of solved exercises and challenges from tutorials, books, and courses to reinforce core R concepts.
-
----
+- **`practice_questions/`** — Original exercise questions stored as Word documents.
+  - `Exercise 1.docx`
+  - `Exercise 2.docx`
+  - `Exercise 3.docx`
 
 ## 🎯 Purpose
 
-This repository is a personal initiative to:
+This repository documents my learning journey and provides practical examples of:
 
-- Practice and strengthen my skills in R programming  
-- Document learning progress and applied knowledge  
-- Serve as a reference for future projects or collaborations  
-- Share reproducible and structured R scripts with others
+- R programming fundamentals
+- Data analysis and data manipulation
+- Statistical analysis
+- Data visualization
+- Reproducible reports with R Markdown
 
----
+## 🛠 Tools and Packages
 
-## 🛠 Tools & Technologies
-- *R Language* – Primary programming environment  
-- *RStudio* – IDE for script development and markdown rendering  
-- *RMarkdown* – For combining code, output, and narrative in reports  
-- *Key Packages Used*:
-  - `tidyverse` – Core data science packages  
-  - `ggplot2` – Data visualization  
-  - `dplyr` / `tidyr` – Data manipulation  
-  - `lubridate` – Working with date and time  
-  - `stringr` – String operations  
-  - `readr` / `readxl` – Data import utilities
-
----
+- **R** — Programming language for statistical computing and data analysis
+- **RStudio** — Recommended IDE for running `.R` and `.Rmd` files
+- **R Markdown** — For combining R code, output, and narrative
+- **Tidyverse packages** — Data manipulation and visualization tools
 
 ## 🚀 Getting Started
 
-1. *Clone this repository*  
-   ```bash
-   git clone https://github.com/Horlar-1st/R-Practice.git
-   cd R-Practice
-   ```
+### 1. Clone the repository
 
-2. *Open in RStudio*  
-   Open `.Rproj` file or browse specific R scripts or RMarkdown notebooks.
+```bash
+git clone https://github.com/MoshoodSO/My-Practices-on-R.git
+cd My-Practices-on-R
+```
 
-3. *Explore*  
-   Dive into each folder to explore scripts, visualizations, and project notes.
+### 2. Open an exercise
 
----
+Open any file from the `R_markdown/` folder in RStudio.
 
-## 🤝 Contributions
+```r
+# Install packages if needed
+install.packages("tidyverse")
+```
 
-This is a learning repository, but suggestions and feedback are welcome!  
-Feel free to open issues or submit pull requests with improvements or ideas.
+### 3. Run the analysis
 
----
+Open an `.Rmd` file in RStudio, then select **Knit** to render the report, or run code chunks individually.
 
 ## 📌 Notes
 
-- All code and projects are for educational and practice purposes.
-- Some datasets used may be publicly available or simulated.
+- Exercise documents in `practice_questions/` provide the original prompts.
+- Corresponding solutions and analyses are available in `R_markdown/`.
+- The repository is intended for educational and practice purposes.
 
----
+## 🤝 Contributions
+
+Suggestions and improvements are welcome. Feel free to open an issue or submit a pull request.
