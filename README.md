@@ -81,5 +81,9 @@ Suggestions and improvements are welcome. Feel free to open an issue or submit a
 
 ## 👤 Author
 
-Created and maintained by [MoshoodSO](https://github.com/MoshoodSO).
+- GitHub: https://github.com/MoshoodSO
+- LinkedIn: https://www.linkedin.com/in/shoyombo-moshood-582003126
+- Personal site: https://moshoodso.vercel.app/
+- Email: shoyombomoshood1@gmail.com
+
 
